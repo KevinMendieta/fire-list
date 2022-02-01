@@ -1,0 +1,63 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+**/node_modules/**
+
+# config
+src/**/config.js
+
+# seed
+/seed
+
+# testing
+/coverage
+
+# seed data
+/seed
+
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+
+package-lock.json
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# sass
+/.sass-cache
+.sass-cache
+
+# firebase
+.firebase/*
+firebase.appengine.json
+firebase-debug.log
+.runtimeconfig.json
+functions/certs
+temp/*
+
+# logs
+*.log
+
+# secret files
+.runtimeconfig.json
+
+stripecli.bat
+
+.seed_BKP
+
+# vscode localhistory
+/.history
+
+# firebase-export
+/firebase-export*
