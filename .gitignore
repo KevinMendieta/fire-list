@@ -58,6 +58,12 @@ stripecli.bat
 
 # vscode localhistory
 /.history
+.vscode
 
 # firebase-export
 /firebase-export*
+
+# dist
+dist
+dist-ssr
+*.local
