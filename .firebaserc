@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "todo-list-e44c7"
+    "default": "todo-list-e44c7",
+    "dev": "todo-list-e44c7"
   }
 }
