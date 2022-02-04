@@ -6,7 +6,7 @@
     "serve:with-emulator": "FIREBASE_AUTH_EMULATOR_HOST=localhost:9099 FIRESTORE_EMULATOR_HOST=localhost:8080 firebase emulators:start --inspect-functions --import=./seed --export-on-exit=./seed",
     "serve": "firebase use dev && yarn serve:with-emulator",
     "start": "vite",
-    "start:with-emulator": "yarn env && REACT_APP_FIREBASE_EMULATOR=ACTIVE yarn vite",
+    "start:with-emulator": "yarn env && REACT_APP_FIREBASE_EMULATOR=ON yarn vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "eslint": "eslint -c .eslintrc.json --ext .ts,tsx ./src"
