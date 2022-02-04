@@ -1,10 +1,12 @@
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 
+import AppRouter from "./routes";
+
 function App() {
   return (
     <ChakraProvider>
-      <h1>Fire List app</h1>
+      <AppRouter />
     </ChakraProvider>
   );
 }
