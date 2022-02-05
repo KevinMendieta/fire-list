@@ -10,6 +10,7 @@ import { Auth } from "../contexts/AuthContext";
 
 export function useFirebaseAuth(): Auth {
   const [currentUser, setCurrentUser] = useState<null | User>(null);
+  const [isLoadingUser, setIsLoadingUser] = useState(true);
 
   function signup(email: string, password: string): Promise<UserCredential> {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -18,6 +19,7 @@ export function useFirebaseAuth(): Auth {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      setIsLoadingUser(false);
     });
     return unsubscribe;
   }, []);
@@ -25,5 +27,6 @@ export function useFirebaseAuth(): Auth {
   return {
     currentUser,
     signup,
+    isLoadingUser,
   };
 }
