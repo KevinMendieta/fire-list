@@ -37,7 +37,7 @@ export default function LoginForm() {
       <Button
         type="submit"
         color="white"
-        backgroundColor="blue.500"
+        backgroundColor="#0c2d48"
         w="100%"
         mb={3}
       >

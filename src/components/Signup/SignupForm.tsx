@@ -19,7 +19,7 @@ export default function SignupForm() {
       </Heading>
 
       <Text fontSize="md" mb={3}>
-        {"Let's get started."}
+        {"Let's get started. It's free!"}
       </Text>
 
       <FormControl isInvalid={errors.email} isRequired mb={3}>
