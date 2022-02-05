@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "wouter";
 
+import PasswordInput from "../PasswordInput";
+
 export default function LoginForm() {
   return (
     <form>
@@ -32,7 +34,7 @@ export default function LoginForm() {
 
       <FormControl isRequired mb={3}>
         <FormLabel htmlFor="password">Password</FormLabel>
-        <Input id="password" type="password" backgroundColor="white" />
+        <PasswordInput />
       </FormControl>
 
       <Text fontSize="md" mb={3} textAlign="right">

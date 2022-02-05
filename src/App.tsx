@@ -13,7 +13,7 @@ function App() {
         w="100%"
         templateRows="100px 1fr "
         templateColumns="1fr"
-        backgroundColor="#F6F7F9"
+        backgroundColor="#F7F7F7"
       >
         <GridItem colSpan={2}>
           <Header />
