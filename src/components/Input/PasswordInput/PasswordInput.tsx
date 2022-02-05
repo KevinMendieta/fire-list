@@ -26,6 +26,7 @@ export default function PasswordInput(props: PasswordInputProps) {
           id="password"
           type={showPassword ? "text" : "password"}
           backgroundColor="white"
+          placeholder="Enter your password"
           {...register("password", { required: true })}
         />
         <InputRightElement width="4rem">

@@ -22,6 +22,7 @@ export default function EmailInput(props: EmailInputProps) {
         id="email"
         type="text"
         backgroundColor="white"
+        placeholder="john@example.com"
         {...register("email", { required: true, validate: validateEmail })}
       />
       {errors.email && (
