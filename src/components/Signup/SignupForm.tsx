@@ -1,20 +1,19 @@
 import React from "react";
-import {
-  Button,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  Link as AppLink,
-  Text,
-} from "@chakra-ui/react";
-import { Link } from "wouter";
+import { Button, FormControl, Heading, Text } from "@chakra-ui/react";
+import { useForm, FieldValues } from "react-hook-form";
 
-import PasswordInput from "../PasswordInput";
+import AppLink from "../AppLink";
+import { EmailInput, PasswordInput } from "../Input";
 
-export default function LoginForm() {
+export default function SignupForm() {
+  const { register, handleSubmit, formState } = useForm();
+  const { errors } = formState;
+
+  const handleLoginSubmit = (formValues: FieldValues) => {
+    console.log(formValues);
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit(handleLoginSubmit)}>
       <Heading as="h2" mb={3}>
         🔥 Join Fire List Today! 🔥
       </Heading>
@@ -23,20 +22,18 @@ export default function LoginForm() {
         {"Let's get started."}
       </Text>
 
-      <FormControl isRequired mb={3}>
-        <FormLabel htmlFor="email">Email</FormLabel>
-        <Input id="email" type="email" backgroundColor="white" />
+      <FormControl isInvalid={errors.email} isRequired mb={3}>
+        <EmailInput register={register} formState={formState} />
       </FormControl>
 
       <FormControl isRequired mb={3}>
-        <FormLabel htmlFor="password">Password</FormLabel>
-        <PasswordInput />
+        <PasswordInput register={register} />
       </FormControl>
 
       <Button
         type="submit"
         color="white"
-        backgroundColor="blue.500"
+        backgroundColor="#0c2d48"
         w="100%"
         mb={3}
       >
@@ -50,11 +47,7 @@ export default function LoginForm() {
 
       <Text fontSize="md">
         {"If you already have a Wonderschool account, please "}
-        <Link href="/login">
-          <AppLink color="blue.500" fontSize="md">
-            Log in.
-          </AppLink>
-        </Link>
+        <AppLink href="/login" text="Login in." />
       </Text>
     </form>
   );

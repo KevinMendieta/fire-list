@@ -1,40 +1,33 @@
 import React from "react";
-import {
-  Button,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  Link as AppLink,
-  Text,
-} from "@chakra-ui/react";
-import { Link } from "wouter";
+import { Button, FormControl, Heading, Text } from "@chakra-ui/react";
+import { useForm, FieldValues } from "react-hook-form";
 
-import PasswordInput from "../PasswordInput";
+import AppLink from "../AppLink";
+import { EmailInput, PasswordInput } from "../Input";
 
 export default function LoginForm() {
+  const { register, handleSubmit, formState } = useForm();
+  const { errors } = formState;
+
+  const handleLoginSubmit = (formValues: FieldValues) => {
+    console.log(formValues);
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit(handleLoginSubmit)}>
       <Heading as="h2" mb={3}>
         Welcome back! 🔥
       </Heading>
       <Text fontSize="md" mb={3}>
         {"First time here? "}
-        <Link href="/signup">
-          <AppLink color="blue.500" fontSize="md">
-            Signup.
-          </AppLink>
-        </Link>
+        <AppLink href="/signup" text="Signup." />
       </Text>
 
-      <FormControl isRequired mb={3}>
-        <FormLabel htmlFor="email">Email</FormLabel>
-        <Input id="email" type="email" backgroundColor="white" />
+      <FormControl isInvalid={errors.email} isRequired mb={3}>
+        <EmailInput register={register} formState={formState} />
       </FormControl>
 
       <FormControl isRequired mb={3}>
-        <FormLabel htmlFor="password">Password</FormLabel>
-        <PasswordInput />
+        <PasswordInput register={register} />
       </FormControl>
 
       <Text fontSize="md" mb={3} textAlign="right">
