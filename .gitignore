@@ -67,3 +67,6 @@ stripecli.bat
 dist
 dist-ssr
 *.local
+
+# notes
+notes.txt
