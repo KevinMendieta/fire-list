@@ -4,13 +4,26 @@ import { useForm, FieldValues } from "react-hook-form";
 
 import AppLink from "../AppLink";
 import { EmailInput, PasswordInput } from "../Input";
+import { useAuth } from "../../hooks";
 
 export default function SignupForm() {
+  const [requestInProgress, setRequestInProgress] = React.useState(false);
+
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
-  const handleLoginSubmit = (formValues: FieldValues) => {
-    console.log(formValues);
+  const { signup } = useAuth();
+
+  const handleLoginSubmit = async (formValues: FieldValues) => {
+    setRequestInProgress(true);
+    if (!signup) return;
+    try {
+      const { email, password } = formValues;
+      await signup(email, password);
+    } catch (error) {
+      console.error(error);
+      setRequestInProgress(false);
+    }
   };
   return (
     <form onSubmit={handleSubmit(handleLoginSubmit)}>
@@ -33,6 +46,8 @@ export default function SignupForm() {
       <Button
         type="submit"
         color="white"
+        isLoading={requestInProgress}
+        disabled={requestInProgress}
         backgroundColor="#0c2d48"
         w="100%"
         mb={3}
