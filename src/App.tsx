@@ -3,6 +3,7 @@ import { ChakraProvider, Grid, GridItem } from "@chakra-ui/react";
 
 import AppRouter from "./routes";
 import Header from "./components/Header";
+import { BigSpinner } from "./components/Spinner";
 
 function App() {
   return (
@@ -17,9 +18,8 @@ function App() {
         <GridItem colSpan={2}>
           <Header />
         </GridItem>
-        {/* <GridItem rowSpan={2}></GridItem> */}
         <GridItem colSpan={2}>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<BigSpinner />}>
             <AppRouter />
           </Suspense>
         </GridItem>
