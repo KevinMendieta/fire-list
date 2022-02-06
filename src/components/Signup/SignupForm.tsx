@@ -6,7 +6,8 @@ import AppLink from "../AppLink";
 import { EmailInput, PasswordInput } from "../Input";
 import { useAuth } from "../../hooks";
 
-export default function SignupForm() {
+export default function SignupForm(props: { onSuccessSignup: () => void }) {
+  const { onSuccessSignup } = props;
   const [requestInProgress, setRequestInProgress] = React.useState(false);
 
   const { register, handleSubmit, formState } = useForm();
@@ -20,6 +21,7 @@ export default function SignupForm() {
     try {
       const { email, password } = formValues;
       await signup(email, password);
+      onSuccessSignup();
     } catch (error) {
       console.error(error);
       setRequestInProgress(false);

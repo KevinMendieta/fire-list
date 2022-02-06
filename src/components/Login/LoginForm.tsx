@@ -6,7 +6,8 @@ import AppLink from "../AppLink";
 import { EmailInput, PasswordInput } from "../Input";
 import { useAuth } from "../../hooks";
 
-export default function LoginForm() {
+export default function LoginForm(props: { onSuccessLogin: () => void }) {
+  const { onSuccessLogin } = props;
   const [requestInProgress, setRequestInProgress] = React.useState(false);
 
   const { register, handleSubmit, formState } = useForm();
@@ -20,6 +21,7 @@ export default function LoginForm() {
     try {
       const { email, password } = formValues;
       await login(email, password);
+      onSuccessLogin();
     } catch (error) {
       console.error(error);
       setRequestInProgress(false);
