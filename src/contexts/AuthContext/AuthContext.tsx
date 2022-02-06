@@ -8,6 +8,7 @@ export interface Auth {
   currentUser: null | User;
   signup: null | ((email: string, password: string) => Promise<UserCredential>);
   login: null | ((email: string, password: string) => Promise<UserCredential>);
+  logout: null | (() => Promise<void>);
   isLoadingUser: boolean;
 }
 
@@ -15,14 +16,15 @@ const AuthContext = React.createContext<Auth>({
   currentUser: null,
   signup: null,
   login: null,
+  logout: null,
   isLoadingUser: true,
 });
 
 export function AuthProvider({ children }: { children: React.ReactChild }) {
-  const { currentUser, signup, login, isLoadingUser } = useFirebaseAuth();
+  const firebaseAuth = useFirebaseAuth();
   return (
-    <AuthContext.Provider value={{ currentUser, signup, login, isLoadingUser }}>
-      {isLoadingUser ? <BigSpinner /> : children}
+    <AuthContext.Provider value={{ ...firebaseAuth }}>
+      {firebaseAuth.isLoadingUser ? <BigSpinner /> : children}
     </AuthContext.Provider>
   );
 }

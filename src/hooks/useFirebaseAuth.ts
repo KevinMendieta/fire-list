@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
   User,
   UserCredential,
 } from "firebase/auth";
@@ -21,6 +22,10 @@ export function useFirebaseAuth(): Auth {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
+  function logout() {
+    return signOut(auth);
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -33,6 +38,7 @@ export function useFirebaseAuth(): Auth {
     currentUser,
     signup,
     login,
+    logout,
     isLoadingUser,
   };
 }
