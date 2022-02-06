@@ -15,8 +15,8 @@ export default function SignupForm() {
   const { signup } = useAuth();
 
   const handleLoginSubmit = async (formValues: FieldValues) => {
-    setRequestInProgress(true);
     if (!signup) return;
+    setRequestInProgress(true);
     try {
       const { email, password } = formValues;
       await signup(email, password);
