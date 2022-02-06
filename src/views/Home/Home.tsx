@@ -1,13 +1,11 @@
 import React from "react";
-import { Box, Center, Text } from "@chakra-ui/react";
+import { Box, Center, Heading } from "@chakra-ui/react";
 
 export default function Home() {
   return (
-    <Box>
-      <Center>
-        <Box w={500} p={4}>
-          <Text as="h2">Hey There! 🔥</Text>
-        </Box>
+    <Box w="100%" h="100%">
+      <Center w="100%" h="100%" justifyContent="center" alignItems="center">
+        <Heading as="h2">Hey There! 🔥</Heading>
       </Center>
     </Box>
   );
