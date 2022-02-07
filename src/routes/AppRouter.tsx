@@ -1,6 +1,8 @@
 import React from "react";
 import { Router, Switch, Route } from "wouter";
 
+import { PrivateRoute } from ".";
+
 const LoginView = React.lazy(() => import("../views/Login"));
 const SignupView = React.lazy(() => import("../views/Signup"));
 
@@ -12,7 +14,7 @@ export default function AppRouter() {
       <Switch>
         <Route path="/login" component={LoginView} />
         <Route path="/signup" component={SignupView} />
-        <Route path="/home" component={HomeView} />
+        <PrivateRoute path="/home" component={HomeView} />
       </Switch>
     </Router>
   );
