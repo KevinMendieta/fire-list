@@ -64,7 +64,7 @@ export default function SignupForm(props: { onSuccessSignup: () => void }) {
 
       <Text fontSize="md">
         {"If you already have a Wonderschool account, please "}
-        <AppLink href="/login" text="Login in." />
+        <AppLink href="/login" text="Log in." />
       </Text>
     </form>
   );
