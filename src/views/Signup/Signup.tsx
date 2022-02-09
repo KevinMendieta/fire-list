@@ -5,8 +5,7 @@ import { useLocation } from "wouter";
 import { SignupForm } from "../../components/Signup";
 
 export default function Signup() {
-  const location = useLocation();
-  const setLocation = location[1];
+  const [, setLocation] = useLocation();
 
   const handleSuccessSignup = () => {
     setLocation("/home");

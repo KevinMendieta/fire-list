@@ -1,5 +1,11 @@
 import React from "react";
-import { Route, Redirect, RouteComponentProps, DefaultParams } from "wouter";
+import {
+  Route,
+  Redirect,
+  RouteComponentProps,
+  DefaultParams,
+  useLocation,
+} from "wouter";
 
 import { useAuth } from "../hooks";
 
@@ -11,11 +17,16 @@ interface PrivateRouteProps {
 export default function PrivateRoute(props: PrivateRouteProps) {
   const { component: Component, path } = props;
 
+  const [location] = useLocation();
   const { currentUser } = useAuth();
   return (
     <Route path={path}>
       {(params) =>
-        currentUser ? <Component params={params} /> : <Redirect to="/login" />
+        currentUser ? (
+          <Component params={params} />
+        ) : (
+          <Redirect to={`/login?redirectTo=${location}`} />
+        )
       }
     </Route>
   );
