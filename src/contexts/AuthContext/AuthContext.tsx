@@ -9,6 +9,7 @@ export interface Auth {
   signup: null | ((email: string, password: string) => Promise<UserCredential>);
   login: null | ((email: string, password: string) => Promise<UserCredential>);
   logout: null | (() => Promise<void>);
+  resetPassword: null | ((email: string) => Promise<void>);
   isLoadingUser: boolean;
 }
 
@@ -17,6 +18,7 @@ const AuthContext = React.createContext<Auth>({
   signup: null,
   login: null,
   logout: null,
+  resetPassword: null,
   isLoadingUser: true,
 });
 

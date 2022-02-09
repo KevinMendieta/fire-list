@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
   User,
   UserCredential,
 } from "firebase/auth";
@@ -26,6 +27,10 @@ export function useFirebaseAuth(): Auth {
     return signOut(auth);
   }
 
+  function resetPassword(email: string): Promise<void> {
+    return sendPasswordResetEmail(auth, email);
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -39,6 +44,7 @@ export function useFirebaseAuth(): Auth {
     signup,
     login,
     logout,
+    resetPassword,
     isLoadingUser,
   };
 }
