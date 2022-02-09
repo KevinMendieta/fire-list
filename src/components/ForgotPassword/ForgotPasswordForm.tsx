@@ -16,7 +16,7 @@ export default function ForgotPassword() {
       <Heading as="h2" mb={3}>
         Forgot your password? 🔥
       </Heading>
-      <Text fontSize="md" mb={3}>
+      <Text fontSize="md" mb={6}>
         Enter your email below and you will get an email to reset your password
       </Text>
 
@@ -29,7 +29,7 @@ export default function ForgotPassword() {
         color="white"
         backgroundColor="#0c2d48"
         w="100%"
-        mb={3}
+        mb={6}
       >
         Send email
       </Button>
