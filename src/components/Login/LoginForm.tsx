@@ -46,7 +46,7 @@ export default function LoginForm(props: { onSuccessLogin: () => void }) {
       </FormControl>
 
       <Text fontSize="md" mb={3} textAlign="right">
-        Forgot your password?
+        <AppLink href="/forgot-password" text="Forgot your password?" />
       </Text>
 
       <Button
