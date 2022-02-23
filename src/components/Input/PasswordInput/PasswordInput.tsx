@@ -41,7 +41,6 @@ export default function PasswordInput(props: PasswordInputProps) {
     }
     return validations;
   };
-  console.log(errors);
   return (
     <>
       <FormLabel htmlFor="password">Password</FormLabel>
