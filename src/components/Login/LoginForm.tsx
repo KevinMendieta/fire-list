@@ -4,8 +4,8 @@ import { useForm, FieldValues } from "react-hook-form";
 
 import AppLink from "../AppLink";
 import { EmailInput, PasswordInput } from "../Input";
-import { useAuth } from "../../hooks";
 import Alert, { AlertTypeEnum, AlertMessage } from "../Alert";
+import { useAuth } from "../../hooks";
 
 export default function LoginForm(props: { onSuccessLogin: () => void }) {
   const { onSuccessLogin } = props;
