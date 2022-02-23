@@ -42,7 +42,7 @@ export default function SignupForm(props: { onSuccessSignup: () => void }) {
       </FormControl>
 
       <FormControl isRequired mb={3}>
-        <PasswordInput register={register} />
+        <PasswordInput register={register} formState={formState} checkFormat />
       </FormControl>
 
       <Button

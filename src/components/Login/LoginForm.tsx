@@ -42,7 +42,7 @@ export default function LoginForm(props: { onSuccessLogin: () => void }) {
       </FormControl>
 
       <FormControl isRequired mb={3}>
-        <PasswordInput register={register} />
+        <PasswordInput register={register} formState={formState} />
       </FormControl>
 
       <Text fontSize="md" mb={3} textAlign="right">
