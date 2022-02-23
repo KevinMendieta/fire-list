@@ -4,11 +4,15 @@ import { useForm, FieldValues } from "react-hook-form";
 
 import AppLink from "../AppLink";
 import { EmailInput, PasswordInput } from "../Input";
+import Alert, { AlertTypeEnum, AlertMessage } from "../Alert";
 import { useAuth } from "../../hooks";
 
 export default function SignupForm(props: { onSuccessSignup: () => void }) {
   const { onSuccessSignup } = props;
   const [requestInProgress, setRequestInProgress] = React.useState(false);
+  const [alertMessage, setAlertMessage] = React.useState<AlertMessage | null>(
+    null
+  );
 
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
@@ -23,7 +27,10 @@ export default function SignupForm(props: { onSuccessSignup: () => void }) {
       await signup(email, password);
       onSuccessSignup();
     } catch (error) {
-      console.error(error);
+      setAlertMessage({
+        type: AlertTypeEnum.Error,
+        message: "Something went wrong, please try again.",
+      });
       setRequestInProgress(false);
     }
   };
@@ -44,6 +51,11 @@ export default function SignupForm(props: { onSuccessSignup: () => void }) {
       <FormControl isRequired mb={3}>
         <PasswordInput register={register} formState={formState} checkFormat />
       </FormControl>
+
+      <Alert
+        alertMessage={alertMessage}
+        onDismiss={() => setAlertMessage(null)}
+      />
 
       <Button
         type="submit"
