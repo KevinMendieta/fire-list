@@ -5,6 +5,7 @@ import {
   AlertTitle,
   AlertDescription,
   CloseButton,
+  Text,
 } from "@chakra-ui/react";
 
 export enum AlertTypeEnum {
@@ -21,22 +22,22 @@ export interface AlertMessage {
 
 interface AlertProps {
   alertMessage: AlertMessage | null;
-  setAlertMessage: (alertMessage: AlertMessage | null) => void;
+  onDismiss: () => void;
 }
 
 export default function Alert(props: AlertProps) {
-  const { alertMessage, setAlertMessage } = props;
+  const { alertMessage, onDismiss } = props;
 
   if (!alertMessage || !alertMessage.message || !alertMessage.type) return null;
   return (
-    <ChakraAlert status={alertMessage.type}>
+    <ChakraAlert mb={3} status={alertMessage.type}>
       <AlertIcon />
-      <AlertTitle mr={2} casing="capitalize">
-        {alertMessage.type}
+      <AlertTitle mr={2}>
+        <Text casing="capitalize">{`${alertMessage.type}:`}</Text>
       </AlertTitle>
       <AlertDescription>{alertMessage.message}</AlertDescription>
       <CloseButton
-        onClick={() => setAlertMessage(null)}
+        onClick={onDismiss}
         position="absolute"
         right="8px"
         top="8px"
