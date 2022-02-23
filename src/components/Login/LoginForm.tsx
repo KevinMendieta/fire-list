@@ -5,10 +5,14 @@ import { useForm, FieldValues } from "react-hook-form";
 import AppLink from "../AppLink";
 import { EmailInput, PasswordInput } from "../Input";
 import { useAuth } from "../../hooks";
+import Alert, { AlertTypeEnum, AlertMessage } from "../Alert";
 
 export default function LoginForm(props: { onSuccessLogin: () => void }) {
   const { onSuccessLogin } = props;
   const [requestInProgress, setRequestInProgress] = React.useState(false);
+  const [alertMessage, setAlertMessage] = React.useState<AlertMessage | null>(
+    null
+  );
 
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
@@ -23,7 +27,10 @@ export default function LoginForm(props: { onSuccessLogin: () => void }) {
       await login(email, password);
       onSuccessLogin();
     } catch (error) {
-      console.error(error);
+      setAlertMessage({
+        type: AlertTypeEnum.Error,
+        message: "Incorrect password or email.",
+      });
       setRequestInProgress(false);
     }
   };
@@ -44,6 +51,11 @@ export default function LoginForm(props: { onSuccessLogin: () => void }) {
       <FormControl isRequired mb={3}>
         <PasswordInput register={register} formState={formState} />
       </FormControl>
+
+      <Alert
+        alertMessage={alertMessage}
+        onDismiss={() => setAlertMessage(null)}
+      />
 
       <Text fontSize="md" mb={3} textAlign="right">
         <AppLink href="/forgot-password" text="Forgot your password?" />
