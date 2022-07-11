@@ -54,10 +54,12 @@ export default function PasswordInput(props: PasswordInputProps) {
         />
         <InputRightElement width="4rem">
           <Button
-            h="1.75rem"
+            w="2rem"
+            h="2rem"
             size="sm"
             bgColor="#0c2d48"
             onClick={() => setShowPassword(!showPassword)}
+            borderRadius="50%"
           >
             <Icon color="white" as={showPassword ? FaEye : FaEyeSlash} />
           </Button>

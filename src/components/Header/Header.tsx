@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className="header">
       <Center p={3}>
-        <Heading as="h1" size="2xl" color="white">
+        <Heading as="h1" size="xl" color="white">
           <Flex align="center" justify="center">
             <Logo /> Fire List
           </Flex>

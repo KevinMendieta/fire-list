@@ -13,7 +13,7 @@ function App() {
         <Grid
           h="100%"
           w="100%"
-          templateRows="100px 1fr "
+          templateRows="100px 1fr"
           templateColumns="1fr"
           backgroundColor="#F7F7F7"
         >
