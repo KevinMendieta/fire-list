@@ -8,18 +8,23 @@ const DOCUMENTS = {
 };
 
 module.exports = {
-  onTaskCreation: functions.firestore
-      .document(DOCUMENTS.task)
-      .onCreate(async (_snapshot, context) => {
-        const userId = context.params.userId;
-        const listId = context.params.listId;
-        const taskId = context.params.taskId;
+  onCreate: functions.firestore
+    .document(DOCUMENTS.task)
+    .onCreate(async (_snapshot, context) => {
+      const userId = context.params.userId;
+      const listId = context.params.listId;
+      const taskId = context.params.taskId;
 
-        const taskDocument = await admin
-            .firestore()
-            .doc(DOCUMENTS.getTaskPath(userId, listId, taskId))
-            .get();
+      const taskDocument = await admin
+          .firestore()
+          .doc(DOCUMENTS.getTaskPath(userId, listId, taskId))
+          .get();
 
-        return taskDocument.ref.set({completedAt: null}, {merge: true});
-      }),
+      return taskDocument.ref.set({completedAt: null}, {merge: true});
+    }),
+  onUpdate: functions.firestore
+    .document(DOCUMENTS.task)
+    .onUpdate(async (snapshot, context) => {
+      return;
+    }),
 };
